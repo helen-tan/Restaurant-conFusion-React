@@ -1,42 +1,24 @@
 //Add new component
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import DishDetail from "./DishdetailComponent";
 
 //1. Extend component - Name of new component is "Menu"
 class Menu extends Component {
 
     //2. Define constructor
-    constructor(props) {
+    constructor(props) { // Props made available from App.js
         super(props);
 
         this.state = {
-            selectedDish: null
+            selectedDish: null  //selected dish will be set to the dish that we click
         }
     }
 
     onDishSelect(dish) {
-        this.setState({selectedDish: dish});
+        this.setState({selectedDish: dish}); // When we need to change the state, must use setState()
     }
 
-    renderDish(dish) {
-        if(dish != null){
-            return(
-                <Card>
-                     <CardImg width="100%" src={dish.image} alt={dish.name}/>
-                     <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                     </CardBody>
-                </Card>
-            );
-
-        }
-        else{
-            return(
-                <div></div>
-            );
-        }
-    }
 
     //3. Implement render function - returns whats need to be displayed on UI
     render(){
@@ -61,9 +43,9 @@ class Menu extends Component {
                 <div className="row">
                     {menu}
                 </div>
-                <div className="row">
-                    {this.renderDish(this.state.selectedDish)}
-                </div>
+
+                <DishDetail dish={this.state.selectedDish}/>    
+                
             </div>
 
         );

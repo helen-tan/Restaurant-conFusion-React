@@ -27,7 +27,7 @@ class App extends Component {
         </Navbar>
 
         {/*Render Menu Component*/}
-        <Menu dishes={this.state.dishes}/>
+        <Menu dishes={this.state.dishes}/> {/*Make dishes available as props to the Menu component */}
        
       </div>
     );
